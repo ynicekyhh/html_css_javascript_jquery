@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="browser-detect.js"></script>
+<script type="text/javascript">
+window.addEventListener( "unload", function(){
+	//현재 페이지를 떠날 때
+	console.log( "unload" );
+});
+
+/* BOM 객체를 가져와 사용(browser-detect.js참고) */
+window.addEventListener( "load", function(){
+	// BrowserDetect 초기화
+	BrowserDetect.init();
+	console.log( navigator.userAgent );
+	console.log( navigator.appVersion );
+	
+	console.log( BrowserDetect.browser );
+	console.log( BrowserDetect.version );
+	console.log( BrowserDetect.OS );
+	
+	// navigator
+	if( navigator.cookieEnabled == true ) {
+		console.log( "쿠키를 사용할 수 있습니다." );
+	} else {
+		console.log( "쿠키를 사용할 수 없습니다." );
+	}
+	
+	// location 객체
+	document.getElementById( "btn-reload" ).
+	addEventListener( "click", function(){
+		//location.reload( false );	// F5를 눌렀을 때
+		location.reload( true );	// Ctrl + F5(캐시 지우고 서버로부터 다시 가져옴)
+	});
+	
+	// history
+	document.getElementById( "btn-prev" ).
+	addEventListener( "click", function(){
+		history.go( -1 );	//전페이지로 이동
+	});
+	
+});
+</script>
+
+</head>
+
+<body>
+	<div id="btn-reload">reload</div>
+	<div id="btn-prev">이전 페이지</div>
+	<p>버튼을 클릭하면  <em>displayDate()</em> 함수가 실행 됩니다.</p>
+	<button id="myBtn">Try it</button>
+	<p id="demo"></p>
+</body>
+</html>

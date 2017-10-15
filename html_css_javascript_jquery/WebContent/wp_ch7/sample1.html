@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>sample1</title>
+		<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("button").click(function(){
+					/* jQuery에서 자체적으로 load 함수안에 callback함수를 구현해 놨을 것
+					(AJAX는 응답이 언제 올지 모르니까 request 하나마다 callback함수가 있어야 한다.) */
+					$("p").load("./sample1.txt");
+					console.log( "non-blockinig 통신 : 여기가 먼저 실행될 수 있음" );
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button>변경</button>
+		<p>변경전</p>
+	</body>
+</html>

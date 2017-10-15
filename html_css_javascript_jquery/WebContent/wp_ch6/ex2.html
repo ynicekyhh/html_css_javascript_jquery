@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<script>
+f = function(){
+	v = "hello";
+}
+
+f();
+console.log(v);	// var를 붙이지 않으면 전역 변수가 된다.
+
+i = 10;
+f2 = function() {
+	for (var i=0; i < 3; i++) {
+	}
+}
+
+f2();
+console.log(i);
+
+var aaaaa=1;
+console.log(aaaaa);
+
+
+var aaaaaaa=1;
+console.log(aaaaaaa);
+</script>
+</head>
+<body>
+
+</body>
+</html>

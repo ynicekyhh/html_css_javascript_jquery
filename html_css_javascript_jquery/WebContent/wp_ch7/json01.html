@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+<script>
+var user = {
+	name: "김용호",
+	email: "ynicekyhh@gmail.com"
+};
+
+$(function(){
+	$("button").click(function(){
+		
+		/* post방식이고, 데이터가 있다면 data:부분에 넣어주면 되고, get으로 넘기려면 url끝에 ?붙여서 처리 */
+		$.ajax( {
+			async: true,	//비동기통신, 'false'는 동기통신
+			url : "/wp_js2/sample.json",
+			type: "get",
+			dataType: "json",	// 받는 데이터 타입
+			data: "",	// '{"name":"둘리", "age":"10"}' <- data를 이런식으로 보낼 수도 있다. 혹은 위에 선언된 user객체를 String으로 객체를 변환해 넘길수도 있다. (JSON.stringify(object) <- 이런식으로 String으로 변환해서 넘겨주기도 함)
+			//contentType: 'application/json',	//서버에 보내는 데이터 타입 결정
+			success: function(response){
+				$.each( response, function(index, vo) {
+					console.log( vo );
+				});
+			},
+			/* error 발생 시 실행됨 */
+			error: function( jqXHR, status, e ){
+				console.error( status + " : " + e );
+			}
+		});
+		
+	});
+});
+</script>
+</head>
+<body>
+	<button>json 데이터 받아오기</button>
+</body>
+</html>

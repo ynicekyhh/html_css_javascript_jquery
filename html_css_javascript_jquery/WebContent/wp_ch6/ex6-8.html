@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var o = {
+		name: "둘리",
+		age:10,
+		info: function() {
+			console.log(this.name + ":" + this.age);
+		}
+	}
+
+	console.log( o.name );
+	o.info();
+
+	//연관 배열(객체의 속성을 배열로 접근)
+	console.log(o["name"]);
+	o["info"]();
+
+	var functionName = "info";
+	o[functionName]();
+
+// Map 처럼 사용 가능
+var map = {};
+map[ "math" ] = 100;
+map[ "science"]  = 200;
+
+console.log( map[ "math" ] + ":" map["science"] );
+</script>
+</head>
+<body>
+
+</body>
+</html>

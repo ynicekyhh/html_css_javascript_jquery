@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>sample3</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function(){
+	$( "button" ).click( function(){
+		/* xml은 예전 RSS피드를 구현할 때 많이 사용되었다. 사용자에게 뭔가를 쫙 뿌려줄 때 */
+		$.ajax({
+			url: 'sample3.xml',	// '/wp_js2/sample3.xml' 과 마찬가지. 상대경로임
+			dataType: 'xml',	// JSON일경우 dataType: 'json'
+			success : function( response ){	// 응답이 올 경우 여기 실행
+				$("item", response).each(function(){
+					//console.log( this );
+					
+					var html = 
+						"<dt>" + $("title", this).text() + "</dt>" +	// xml을 가져와 그(this) 안의 title tag에서 text를 읽어옴 
+						"<dd>" + $("description", this).text() + "</dd>";
+					
+					$("dl").append(html);
+				});
+			}
+		});
+	});
+	
+	
+});
+		</script>
+	</head>
+	<body>
+		<button>데이터 가져오기</button>
+		<dl>
+		
+		</dl>
+	</body>
+</html>

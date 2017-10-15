@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 함수 생성 1(비추)
+function f1( a, b, c ) {
+	return a + b + c;
+}
+console.log( f1(10, 20, 30) );
+
+// 함수 생성2(추천)
+var f2 = function( a, b, c ) {
+	return a + b + c;
+}
+console.log( f2(10, 20, 30) );
+
+// 함수 생성3(완전비추)
+var f3 = new Function( "a", "b", "c", "var sum = a + b + c; return sum" );
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+	// 기본 데이터 타입
+	var s = "HelloWorld";
+	var c = 'A';
+	var i = 10;
+	var pi = 3.14;
+	var b = true;
+	var u;
+	var n = null;
+	/* []나 {} 둘 다 object를 생성함. new Object와 같음 */
+	var a = [];
+	var o2 = {};
+	
+	var s2 = new String("hello world");
+	function f() {};	/* 가급적 쓰지 말 것 */
+	f2 = new function() {};
+	
+	console.log( typeof s );
+	console.log( typeof c );
+	console.log( typeof i );
+	console.log( typeof pi );
+	console.log( typeof b );
+	console.log( typeof u );
+	console.log( typeof n );
+	console.log( "--------------------------------------" );
+	console.log( typeof s2 );
+	console.log( typeof f );
+	
+	/* String, Number같은 기본 타입이 아닌 Object는 아래와같이 속성을 마음대로 쓸 수 있음 */	
+	var o = new Object();
+	o.name = "object add";
+	console.log(o.name);
+	
+	console.log( "--------------------------------------" );
+	
+	console.log( s.toUpperCase() );
+	console.log( s2.toUpperCase() );
+	
+	//null, undefined
+	var v1, v2 = null;
+	console.log( v1 == v2 );
+	console.log( v1 === v2 );
+
+	console.log( "2" == 2 );
+	console.log( "2" === 2 );
+	
+	// 동적 타이핑
+	var v3 = "string";
+	console.log( typeof 3 );
+
+	v3 = 10;
+	console.log( typeof v3 );
+</script>
+</head>
+<body>
+	<h1>자바스크립트 데이터형 테스트</h1>
+</body>
+</html> 

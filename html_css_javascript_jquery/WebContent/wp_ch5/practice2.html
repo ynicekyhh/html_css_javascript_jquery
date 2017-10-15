@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>리스트 정의하기</title>
+<style type="text/css">
+*			{ margin:0; padding:0 }
+ul, ol		{ list-style-type: none }
+body		{ font-family: '맑은 고딕' 돋움; font-size:0.75em; color:#333 }
+
+.tree {
+	width: 400px;
+	margin: 100px auto 0 auto;
+}
+
+.tree li{
+	border:1px solid #666; 
+	line-height: 1.8em;
+	background: url('images/bullet11.jpg') 0 12px no-repeat;
+}
+
+.tree ul{
+	margin-left: 30px;
+}
+
+</style>
+</head>
+<body>
+	<ul class="tree">
+		<li>리스트 스타일</li>
+		<li>리스트 스타일</li>
+			<!-- li밑에는 ul이 오면 안되지만 약간 어기면서 하면 쉽게 할 수 있어서 하게 됨 -->
+			<ul>
+				<li>리스트 스타일</li>
+				<li>리스트 스타일</li>
+					<ul>
+						<li>리스트 스타일</li>
+						<li>리스트 스타일</li>
+						<li>리스트 스타일</li>
+						<li>리스트 스타일</li>
+					</ul>
+				<li>리스트 스타일</li>
+				<li>리스트 스타일</li>
+			</ul>
+		<li>리스트 스타일</li>
+		<li>리스트 스타일</li>
+	</ul>
+</body>
+</html>

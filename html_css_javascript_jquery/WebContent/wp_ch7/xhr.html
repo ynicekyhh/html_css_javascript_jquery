@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery/jquery-1.9.0.js"></script>
+<script type="text/javascript">
+/* 
+ * - sample3-2에서 사용한 $ajax()가 나오기 전에 사용했던 방법 
+ * XMLHttpRequeest는 브라우저내의 UI가 없는 브라우저같은 존재로서, JS engine이 XMLHttpRequest 객체를 참조하게끔 브라우저가 구현되어 있다.
+ * 따라서 아래와같이 js에서 new XMLHttpRequest()로 생성할 수 있다.
+ */
+ 
+//eval 테스트 : String을 JS로 실행시켜줌
+eval( "console.log(2 + 3)" ); 
+ 
+$( function(){
+	$("button").click( function(){
+		//1. XMLHttpRequest 객체 생성
+		var xhr = new XMLHttpRequest();
+		
+		//2. 통신 상태 변화에 따른 콜백 함수 정의
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 0){
+				// open() 호출 전
+				console.log( "readyState(0) - unset" );
+			} else if(this.readyState == 1){
+				// open() 호출 후
+				console.log( "readyState(1) - set" );
+			} else if(this.readyState == 2){
+				// send()) 호출 후
+				console.log( "readyState(2) - sent" );
+			} else if(this.readyState == 3){
+				// loading...
+				console.log( "readyState(3) - loading" );
+			} else if( this.readyState == 4 ){
+				// done
+				console.log( "readyState(4) - done" );
+				console.log( xhr.responseText );	//String 으로 들어옴
+		
+				/* 위에서는 String이지만 eval()을 쓰면서 JS 배열 객체로 만들어줌 */
+				var response = eval( xhr.responseText );
+				console.log( response );
+				$.each( response, function(index, vo) {
+					console.log( vo );
+				});
+			}
+		};
+		
+		//3. open
+		xhr.open( "GET", "/wp_js2/sample.json" );
+		
+		//4. send request
+		xhr.send();
+	});
+});
+</script>
+</head>
+<body>
+	<button>
+	데이터 가져오기
+	</button>
+</body>
+</html>

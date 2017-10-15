@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+<script>
+
+//jQuery 버전 확인
+//var $obj = jQuery();
+var $obj = $();
+console.log( $obj.jquery );
+
+//엘리먼트를 골라야 하는 시점 1 ( Vanila JS - 순수 자바 스크립트 )
+window.onload = function(){
+	console.log( document.getElementById("my-p") );
+}
+
+//엘리먼트를 골라야 하는 시점 2 (jQuery)
+/* 아래 코드는 DOM을 jQuery로 mapping하여 jQuery 라이브러리를 사용하여 DOM에 접근가능하게 함 */
+//jQuery( document ).onload( function(){	<-- 이건 Vanila JS문법이니 안됨. jQuery 함수를 써야함
+jQuery( document ).ready( function(){
+	console.log( document.getElementById("my-p") );
+});
+
+//엘리먼트를 골라야 하는 시점 3 (jQuery)
+$( document ).ready( function(){
+	console.log( document.getElementById("my-p") );
+});
+
+//엘리먼트를 골라야 하는 시점 4 (jQuery)
+$(function(){
+	console.log( document.getElementById("my-p") );
+});
+
+</script>
+</head>
+<body>
+<p id="my-p">
+    이 문장이 보이고 Hello World가 뜨면, 자바스크립트에서 HTML 엘리멘트에 접근할 수
+    있는 것입니다. 	
+</p>
+</body>
+</html>
+ 

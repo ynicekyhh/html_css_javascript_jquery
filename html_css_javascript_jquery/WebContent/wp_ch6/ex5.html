@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+	//객체 (타입이 object) 생성 1 : 생성자 함수
+	var o = new Object();
+	o.name = "둘리";
+	o.age = 30;
+	o.info = function() {
+		console.log( this.name + ":" + this.age );
+	}
+
+	o.info();
+
+	//객체 (타입이 object) 생성 2 : 리터럴
+	var o2 = new Object();
+	o2.name = "둘리2";
+	o2.age = 30;
+	o2.info = function() {
+		console.log( this.name + ":" + this.age );
+	}
+
+	o2.info();	
+
+	//객체 (타입이 object) 생성 3 : JSON(JavaScript Object Notation)
+	var o3 = {
+		name: "둘리3",
+		age: 20,
+		info:function(){
+			console.log( this.name + ":" + this.age );
+		}
+	}
+
+	o3.info();
+
+	//객체 (타입이 object) 생성 4 : 생성자 함수 + 내부 변수 초기화
+	var User = function(name, age ) {
+		this.name = name;
+		this.age = age;
+		this.info = function(){
+			console.log( this.name + ":" + this.age );
+		}
+	}
+
+	var o4 = new User( "둘리4", 40 );
+	o4.info();
+
+	/* 위처럼 this.info로 만들게 되면 User객체 생성마다 this.info가 계속 만들어짐. 
+		반면, User.prototype.info를 사용하게 되면 user객체는 다 info()에 접근 가능하나 객체마다 생성되지는 않음.
+		또한, 오버라이드와 비슷한 개념으로 user.info()를 재 정의해 줄 수 있음.
+
+		User.prototype.info = function(){};
+		//재정의(오버라이드)
+		o4.info = function(){};
+	*/
+	
+
+</script>
+</body>
+</html>

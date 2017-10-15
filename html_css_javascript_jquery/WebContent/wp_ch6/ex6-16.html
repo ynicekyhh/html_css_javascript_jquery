@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// 동적 파라미터
+var sum = function(){
+  var s = 0;
+  /* arguments는 내장객체 */
+  for( var i = 0; i < arguments.length; i++ ){
+    s += arguments[i];
+  }
+  arguments.length;
+
+  return s;
+}
+
+/* arguments 객체를 씀으로서 파라미터의 개수를 마음대로 쓸 수 있다. */
+console.log( sum() );
+console.log( sum(10, 20) );
+console.log( sum(10, 20, 30) );
+console.log( sum(10, 20, 30, 40) );
+
+/* 이렇게 arguments를 쓰면서 파라미터의 속성을 정해줄 수도 있다. 1번째는 아무거나, 2번째는 name이 와야하고, 3번째는 함수가 와야 한다. */
+var f = function() {
+  console.log( arguments[0] );
+  console.log( arguments[1].name );
+  arguments[2].f();
+}
+
+f( 10, {
+  name:"둘리"
+}, function(){
+  console.log( "Hello" );
+});
+
+/* 함수를 생성하면서 바로 실행하도록 할 때 */
+(function( a ){
+  console.log( "Hello" + a );
+  console.log( "Hello" + a );
+  console.log( "Hello" + a );
+  console.log( "Hello" + a );
+})( 10 );
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

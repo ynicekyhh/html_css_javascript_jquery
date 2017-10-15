@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var onClicked = function(){
+	console.log("clikced!");
+}
+
+/* window.onload는 HTML DOM이 다 구성된 이후에 실행됨 */
+window.onload = function(){
+	var el = document.getElementById( "my-h1" );
+	/*
+	el.onclick = function(){
+		console.log("clikced!");
+	}
+	*/
+	
+	/*  아래 두 개는 동일 */
+	// DOM Level 0
+	el.onclick = onClicked;
+	
+	// DOM Level 2
+	//el.addEventListener( "click", onClicked );
+	
+}
+</script>
+</head>
+<body>
+<!--
+<h1 onclick="this.innerHTML='Ooops!';">Click on this text!</h1>
+-->
+<!-- html tag에 직접 js코드를 삽입가능 -->
+<h1 onclick="console.log('clicked!');">Click on this text!</h1>
+<h1 onclick="onClicked();">Click on this text!</h1>
+<h1 id="my-h1">Click on this text!</h1>
+</body>
+</html>

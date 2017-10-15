@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+ Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>sample1</title>
+		<script type="text/javascript" src="./jquery/jquery-1.9.0.js"></script>
+		<script type="text/javascript">
+		$(function(){
+
+			setTimeout( function(){
+				var $li = $( "li" );
+				$li.css( "color", "#f00" );
+
+				//jQuery Object 뭐냐?
+				console.log( $li.length );
+				console.log( $li[0] );	//HTML Element Object
+
+				//error : 아래 코드는 css는 Vanila JS의 function이 아니니까 아래와 같이 쓸 수 없음
+				//$li[0].css( "font-weight", "bold" );
+				$li[0].style.fontWeight = "bold";	//이건 Vanila JS DOM으로 접근한 방식
+
+				/* 
+				 jQuery API를 호출 하고 싶으면 jQuery 함수(=$)로 Wrapping 한다.
+				 */
+				$($li[0]).css( "text-decoration", "underline");
+
+				//get API 함수를 사용해서 HTMLElement 가져오기
+				console.log($li.get(1));
+				//$($li.get(1)).css( "background-color", "#ccc" ); //아래와 같은 의미. jQuery에서는 '-' 대신 대문자로 연결해도됨
+				$($li.get(1)).css( "backgroundColor", "#ccc" );
+				
+			}, 2000 );
+			
+		});
+		</script>
+	</head>
+	<body>
+	<ul>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+		<li> 텍스트 텍스트 텍스트 텍스트 텍스트 </li>
+	</ul>
+
+	</body>
+</html>

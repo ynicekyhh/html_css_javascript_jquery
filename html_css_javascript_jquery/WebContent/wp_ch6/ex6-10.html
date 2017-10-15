@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var str = "Hello I'm String";
+
+//길이
+console.log( str.length );
+
+//배열로 접근 가능
+for( var i = 0; i < str.length; i++ ) {
+	/* charAt보다 배열로 접근이 간편함 */
+	//console.log( str.charAt( i ) );
+	console.log( str[ i ] );
+}
+
+// + 연산
+var str2 = "Hello" + " " + "World";
+console.log( str2 );
+
+var str3 = "number" + 20;
+console.log( str3 );
+
+/* 순서와 상관없이 str4, str5 모두 Integer가 String으로 변해서 표현됨 */
+var str4 = "50" + 50;
+console.log( str4 );	// 5050
+
+var str5 = 50 + "50";
+console.log( str5 );	// 5050
+
+//parseInt
+console.log( parseInt("50") + 50 );	// 100
+console.log( parseInt("50", 10) + 50 );
+console.log( parseInt("50", 16) + 50 );
+
+console.log( parseInt("a", 16) );
+console.log( parseInt("b", 16) );
+
+console.log( "//검색///////");
+
+// 검색
+var index = str.indexOf( "string2" );
+console.log( index );
+
+// 서브스트링
+console.log( str.substr( index ));
+console.log( str.substr( index, 10 ));
+console.log( str.substring( index, 10 ));
+
+// str은 immutable(변경이 되지 않는다.)
+console.log( str );
+
+// split
+var s = str.split( " " );
+console.log( s );
+
+// encoding
+var url = "http://mysite.com/board?search=김용호&email=ynicekyhh@gmail.com";
+
+// escape() <- deprecated (아스키 문자가 아니라면 모두 유니코드 형식으로 변환)
+console.log( escape(url) );	//문제코드
+/* 이런식으로 값들만 escape시켜줘야 한다. */
+console.log( "http://mysite.com/board?" +
+	"search=" + escape("김용호") +
+	"&email=" + escape("ynicekyhh@gmail.com") );
+
+/* 얘는 encoding시켜야 할 놈만 시킴. escape는 전부 다 해서 문제가 됨. 얘를 쓰라 */
+console.log( encodeURI(url) );
+
+var f = function() {
+	location.href = url;
+}
+
+/* 3초 후에 실행 */
+setTimeout(f, 3000);
+
+/*
+위와 동일
+setTimeout(function() {
+	location.href = url;
+}, 3000);
+*/
+
+console.log( "end!" );
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

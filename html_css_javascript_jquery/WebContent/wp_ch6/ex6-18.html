@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+var displayDate = function(){
+	var d = new Date();
+	var dates = (d.getYear() + 1900) + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+				d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+	
+	var elP = document.getElementById( "demo" );
+	elP.innerHTML = dates;
+}
+
+var clearDate = function(){
+	var elP = document.getElementById( "demo" );
+	elP.innerHTML = "";
+}
+
+/* window.addEventListener를 쓸 때는 'on'을 빼줘야 한다. */
+window.addEventListener( "load", function(){
+	console.log( "DOM Loaded" );
+	var elButton = document.getElementById( "myBtn" );
+	
+	elButton.ondblclick = function(){
+		console.log( "dblclick" );
+	}
+	
+	//elButton.addEventListener( "click", function(){
+	elButton.onclick = function(){
+		console.log( "button clicked" );
+		displayDate();
+	}
+	
+	elButton.onmousedown = function(){
+		console.log( "onmousedown" );
+	}
+	
+	elButton.onmouseup = function(){
+		console.log( "onmouseup " );
+	}
+	
+	elButton.onmouseover = function(){
+		console.log( "mouseover" );
+		displayDate();
+	}
+	
+	elButton.onmouseout = function(){
+		console.log( "mouseout" );
+		clearDate();
+	}
+});
+
+/* 다른페이지로 이동시 호출. 사용자가 타 페이지로 이동하려고 할 때, 기존 페이지에서 구성해 놓은 것들을 저장하는 등의 작업을 수행할 때 사용 */
+window.addEventListener( "unload", function(){
+	console.log( "unloaded" );
+});
+
+</script>
+
+</head>
+
+<body>
+	<p>버튼을 클릭하면  <em>displayDate()</em> 함수가 실행 됩니다.</p>
+	<button id="myBtn">Try it</button>
+	<p id="demo"></p>
+</body>
+</html>

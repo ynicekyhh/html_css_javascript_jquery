@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.addEventListener( "load", function() {
+	
+	var mySelect = document.getElementById( "my-sel" );
+	//mySelect.onchange = function(){}
+	mySelect.addEventListener("change", function(){
+		//this : 여기서 this는 mySelect element자체를 가리킴. 따라서 mySelect같은 변수를 선언하지 않고 쓸 때 유용함
+		var selectedIndex = this.selectedIndex;
+
+		console.log( selectedIndex );
+		console.log( this.options[selectedIndex].value );
+	});
+	
+	/* inputbox에 포커스를 주고 글을 변경한 후 포커스가 inputbox에서 다른곳으로 바뀌면 change가 실행됨 */
+	var myInput = document.getElementById( "my-input" );
+	myInput.addEventListener( "change", function(){
+		console.log( "changed....." );
+	});
+
+	myInput.addEventListener( "focus", function(){
+		this.style.backgroundColor = "#D1E0F0";
+		console.log( "focused" );
+	});
+
+	myInput.addEventListener( "blur", function(){
+		this.style.backgroundColor = "#FFFFFF";
+		console.log( "blur" );
+	});
+
+	var form = document.getElementById( "my-form" );
+	form.onsubmit = function(){
+		/*
+			Client Validation( client에서는 UX에 의거한 validation check, 
+					server에서는 DB connection과 관련있으니 security와 관련된 check )		
+		*/
+		// id 비어있는 체크
+		var idInput = document.getElementById( "my-input" );
+		if( idInput.value == "" ){
+			alert( "아이디는 필수 입력 사항입니다." );
+			return false;	// submit은 return false를 해 주면 타겟으로 넘어가지 않는다.
+		}
+		
+		var provCheckbox = document.getElementById( "my-checkbox" );
+		if( provCheckbox.checked == false ) {
+			alert( "약관을 동의해 주세요." );
+			return false;
+		}
+		
+		return true;
+	}
+});
+</script>
+</head>
+<body>
+<form id="my-form" action="join" method="post">
+	<select id="my-sel">
+		<option value="v1">value1</option>
+		<option value="v2">value2</option>
+		<option value="v3">value3</option>
+		<option value="v4">value4</option>
+		<option value="v5">value5</option>
+	</select>
+	<br>
+	<br>
+	
+	아이디 입력:<input type="text" id="my-input" style="outline:none; border:1px solid #000">
+	<br>
+	<br>
+	
+	약관 동의:<input type="checkbox" id="my-checkbox">
+	<br>
+	<br>
+	<input type="submit" value="가입">
+</form>
+<p>
+	INPUT에 포커스가 없어지면, 이전 값이 변했는 지 판단해서 항상 대문자로 만드는 예제입니다.
+</p>
+
+</body>
+</html>
